@@ -1,5 +1,6 @@
-import './App.css';
-import { useEffect, useState } from 'react';
+import "./App.css";
+import { useEffect, useState } from "react";
+import "./styles/colors.css";
 
 interface Circles {
   id: number;
@@ -50,20 +51,22 @@ function App() {
         size,
         x,
         y,
-        gradient: `linear-gradient(${randomDirection()}, #05001E, #0537C1)`,
+        gradient: `linear-gradient(${randomDirection()}, var(--purple700), var(--purple600))`,
         directionX,
         directionY,
         speed: Math.random() * 1 + 0.5, // Velocità casuale
       };
     };
 
-    const initialCircles = Array.from({ length: 10 }, (_, index) => generateCircle(index));
+    const initialCircles = Array.from({ length: 10 }, (_, index) =>
+      generateCircle(index)
+    );
     setCircles(initialCircles);
 
     const interval = setInterval(() => {
-      setCircles(prevCircles => {
+      setCircles((prevCircles) => {
         // Aggiorna la posizione dei cerchi
-        return prevCircles.map(circle => {
+        return prevCircles.map((circle) => {
           let newX = circle.x + circle.directionX * circle.speed;
           let newY = circle.y + circle.directionY * circle.speed;
 
@@ -93,27 +96,20 @@ function App() {
 
   const randomDirection = () => {
     const directions = [
-      'to top',
-      'to bottom',
-      'to left',
-      'to right',
-      'to top left',
-      'to top right',
-      'to bottom left',
-      'to bottom right',
+      "to top",
+      "to bottom",
+      "to left",
+      "to right",
+      "to top left",
+      "to top right",
+      "to bottom left",
+      "to bottom right",
     ];
     return directions[Math.floor(Math.random() * directions.length)];
   };
 
   return (
     <div className="App">
-      <div className="container">
-        
-        <h1>Malavasi Manuel</h1>
-        <h3>Mobile developer</h3>
-
-      </div>
-
       <div className="circle-container">
         {circles.map((circle) => (
           <div
@@ -128,6 +124,10 @@ function App() {
             }}
           />
         ))}
+      </div>
+      <div className="container">
+        <h1>MALAVASI MANUEL</h1>
+        <h3>"Know your limits, but never stop trying to overcome them."</h3>
       </div>
     </div>
   );
